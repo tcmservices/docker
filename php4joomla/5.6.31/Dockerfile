@@ -14,3 +14,7 @@ RUN apt-get install -y libzip-dev && pecl install zip && docker-php-ext-enable z
 
 #Install xdebug support
 RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+#Configure xdebug
+RUN echo "xdebug.remote_enable=true" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "xdebug.remote_connect_back=true" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
