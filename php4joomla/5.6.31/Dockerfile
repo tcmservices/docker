@@ -3,6 +3,9 @@ FROM php:5.6.31-apache
 #Get latest package list
 RUN apt-get update
 
+#Install Vim editor
+RUN apt-get install -y vim
+
 #Install mcrypt support
 RUN	apt-get install -y libmcrypt-dev && docker-php-ext-install mcrypt
 
@@ -16,5 +19,6 @@ RUN apt-get install -y libzip-dev && pecl install zip && docker-php-ext-enable z
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 #Configure xdebug
-RUN echo "xdebug.remote_enable=true" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-RUN echo "xdebug.remote_connect_back=true" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
