@@ -27,7 +27,7 @@ RUN echo "xdebug.remote_host=10.0.75.1" >> /usr/local/etc/php/conf.d/docker-php-
 
 WORKDIR /var/www/html
 
-#/Install wget
+#/Install wget, needed to install composer
 RUN apt-get install -y wget
 
 #Install Composer
@@ -38,3 +38,6 @@ RUN php -r "unlink('composer-setup.php');"
 
 #Install man to be able to see the manual for commands
 RUN apt-get install -y man
+
+#Install Linux zip
+RUN apt-get install -y zip
