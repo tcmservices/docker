@@ -46,7 +46,7 @@ RUN apt-get install -y zip
 RUN a2enmod rewrite
 
 #Add custom php.ini
-COPY php.ini /usr/local/etc/php/
+#COPY php.ini /usr/local/etc/php/
 
 #COPY joomla_install.php /var/www/html/joomla_install.php
 #RUN chown www-data:www-data joomla_install.php
