@@ -1,4 +1,4 @@
-FROM php:5.6.31-apache
+FROM php:5.6.32-apache
 
 #Get latest package list
 RUN apt-get update
@@ -41,3 +41,8 @@ RUN apt-get install -y man
 
 #Install Linux zip
 RUN apt-get install -y zip
+
+COPY joomla_install.php /var/www/html/joomla_install.php
+#RUN chown www-data:www-data joomla_install.php
+#CMD [ "php", "/var/www/html/joomla_install.php" ]
+#CMD [ "wget", "https://downloads.joomla.org/cms/joomla3/3-8-1/joomla_3-8-1-stable-full_package-zip" ]
