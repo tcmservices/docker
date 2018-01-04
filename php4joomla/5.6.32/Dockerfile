@@ -45,8 +45,11 @@ RUN apt-get install -y zip
 #Enable Mod_Rewrite
 RUN a2enmod rewrite
 
+#Install Tidy
+RUN apt-get install -y tidy
+
 #Add custom php.ini
-#COPY php.ini /usr/local/etc/php/
+#ADD php.ini /usr/local/etc/php
 
 #COPY joomla_install.php /var/www/html/joomla_install.php
 #RUN chown www-data:www-data joomla_install.php

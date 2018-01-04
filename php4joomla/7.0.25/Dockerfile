@@ -45,6 +45,9 @@ RUN apt-get install -y zip
 #Enable Mod_Rewrite
 RUN a2enmod rewrite
 
+#Install Tidy
+RUN apt-get install -y tidy
+
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
 
