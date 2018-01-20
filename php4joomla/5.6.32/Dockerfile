@@ -48,6 +48,9 @@ RUN a2enmod rewrite
 #Install BC Math
 RUN	docker-php-ext-install bcmath
 
+#Install GD
+RUN docker-php-ext-install gd
+
 #Add custom php.ini
 #ADD php.ini /usr/local/etc/php
 
