@@ -51,9 +51,8 @@ RUN	docker-php-ext-install bcmath
 #Install GD
 RUN apt-get install -y \
 			libjpeg-dev \
-    		libpng-dev \
-    		docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr;\
-    		docker-php-ext-install gd
+    		libpng-dev
+RUN docker-php-ext-install gd
 
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
