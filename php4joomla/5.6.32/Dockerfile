@@ -49,7 +49,11 @@ RUN a2enmod rewrite
 RUN	docker-php-ext-install bcmath
 
 #Install GD
-RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; && docker-php-ext-install gd
+RUN apt-get install -y \
+			libjpeg-dev \
+    		libpng-dev \
+    		docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr;\
+    		docker-php-ext-install gd
 
 #Add custom php.ini
 #ADD php.ini /usr/local/etc/php
