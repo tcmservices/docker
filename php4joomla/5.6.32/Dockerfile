@@ -48,11 +48,16 @@ RUN a2enmod rewrite
 #Install BC Math
 RUN	docker-php-ext-install bcmath
 
+#Install some needed packages to use add-apt-repository
+RUN apt-get install -y software-properties-common python-software-properties
+
 #Install GD
 RUN apt-get install -y \
-			libjpeg-dev \
-    		libpng-dev
-RUN docker-php-ext-install gd
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng12-dev \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/ --with-jpeg-dir=/usr/ --with-png-dir=/usr/ \
+    && docker-php-ext-install gd
 
 #Add custom php.ini
 #ADD php.ini /usr/local/etc/php
