@@ -19,7 +19,7 @@ RUN	docker-php-ext-install mysqli
 RUN apt-get install -y libzip-dev && pecl install zip && docker-php-ext-enable zip
 
 #Install xdebug support
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 #Configure xdebug
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
