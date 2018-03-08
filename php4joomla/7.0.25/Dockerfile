@@ -59,6 +59,9 @@ RUN apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/ --with-jpeg-dir=/usr/ --with-png-dir=/usr/ \
     && docker-php-ext-install gd
 
+#Install Soap
+RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
+
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
 
