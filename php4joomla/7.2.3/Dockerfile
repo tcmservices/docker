@@ -10,7 +10,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y vim
 
 #Install mcrypt support
-RUN	apt-get install -y libmcrypt-dev
+RUN	apt-get install -y libmcrypt-dev libreadline-dev && pecl install mcrypt-1.0.1
 
 #Install mysqli support
 RUN	docker-php-ext-install mysqli
@@ -61,6 +61,9 @@ RUN apt-get install -y \
 
 #Install Soap
 RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
+
+#Install PDO MYSQL
+RUN docker-php-ext-install pdo_mysql
 
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/

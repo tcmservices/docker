@@ -62,6 +62,10 @@ RUN apt-get install -y \
 #Install Soap
 RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
 
+
+#Install PDO MYSQL
+RUN docker-php-ext-install pdo_mysql
+
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
 
