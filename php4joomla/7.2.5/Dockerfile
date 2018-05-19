@@ -1,4 +1,4 @@
-FROM php:5.6.34-apache
+FROM php:7.2.5-apache
 
 #Get latest package list
 RUN apt-get update
@@ -10,7 +10,7 @@ RUN apt-get install -y apt-utils
 RUN apt-get install -y vim
 
 #Install mcrypt support
-RUN	apt-get install -y libmcrypt-dev && docker-php-ext-install mcrypt
+RUN	apt-get install -y libmcrypt-dev libreadline-dev && pecl install mcrypt-1.0.1
 
 #Install mysqli support
 RUN	docker-php-ext-install mysqli
@@ -19,7 +19,7 @@ RUN	docker-php-ext-install mysqli
 RUN apt-get install -y libzip-dev && pecl install zip && docker-php-ext-enable zip
 
 #Install xdebug support
-RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 #Configure xdebug
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
@@ -49,13 +49,13 @@ RUN a2enmod rewrite
 RUN	docker-php-ext-install bcmath
 
 #Install some needed packages to use add-apt-repository
-RUN apt-get install -y software-properties-common python-software-properties
+#RUN apt-get install -y software-properties-common python-software-properties
 
 #Install GD
 RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libpng12-dev \
+        libpng-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/ --with-jpeg-dir=/usr/ --with-png-dir=/usr/ \
     && docker-php-ext-install gd
 
@@ -65,11 +65,8 @@ RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
 #Install PDO MYSQL
 RUN docker-php-ext-install pdo_mysql
 
-#Enable CGI scripts
-RUN a2enmod cgi
-
 #Add custom php.ini
-#ADD php.ini /usr/local/etc/php
+#COPY php.ini /usr/local/etc/php/
 
 #COPY joomla_install.php /var/www/html/joomla_install.php
 #RUN chown www-data:www-data joomla_install.php
