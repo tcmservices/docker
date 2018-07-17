@@ -65,6 +65,9 @@ RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
 #Install PDO MYSQL
 RUN docker-php-ext-install pdo_mysql
 
+#Rename php extensions directory
+mv /usr/local/lib/php/extensions/no-debug-non-zts-20170718 /usr/local/lib/php/extensions
+
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
 
