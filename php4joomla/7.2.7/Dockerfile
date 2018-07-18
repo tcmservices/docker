@@ -66,7 +66,10 @@ RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
 RUN docker-php-ext-install pdo_mysql
 
 #Rename php extensions directory
-mv /usr/local/lib/php/extensions/no-debug-non-zts-20170718 /usr/local/lib/php/extensions
+RUN mv /usr/local/lib/php/extensions/no-debug-non-zts-20170718/* /usr/local/lib/php/extensions
+
+#add a default php.ini file
+RUN echo "extension_dir=/usr/local/lib/php/extensions" >> /usr/local/etc/php/php.ini
 
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
