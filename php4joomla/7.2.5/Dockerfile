@@ -66,7 +66,7 @@ RUN apt-get install -y libxml2-dev && docker-php-ext-install soap
 RUN docker-php-ext-install pdo_mysql
 
 #Install Cron
-RUN apt-get install cron
+RUN apt-get install -y cron
 
 #Rename php extensions directory
 RUN mv /usr/local/lib/php/extensions/no-debug-non-zts-20170718/* /usr/local/lib/php/extensions
