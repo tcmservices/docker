@@ -77,6 +77,9 @@ RUN echo "extension_dir=/usr/local/lib/php/extensions" >> /usr/local/etc/php/php
 #Enable CGI scripts
 RUN a2enmod cgi
 
+#install mysql client
+RUN apt-get install -y mysql-client
+
 #Add custom php.ini
 #ADD php.ini /usr/local/etc/php
 

@@ -74,6 +74,9 @@ RUN mv /usr/local/lib/php/extensions/no-debug-non-zts-20151012/* /usr/local/lib/
 #add a default php.ini file
 RUN echo "extension_dir=/usr/local/lib/php/extensions" >> /usr/local/etc/php/php.ini
 
+#install mysql client
+RUN apt-get install -y mysql-client
+
 #Add custom php.ini
 #COPY php.ini /usr/local/etc/php/
 
