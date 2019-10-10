@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     mysql-client
 
 #Install mcrypt support
-RUN pecl install mcrypt-1.0.1
+#RUN pecl install mcrypt-1.0.1
 
 #Install and enable native ZIP support for PHP
 RUN pecl install zip && docker-php-ext-enable zip
@@ -69,7 +69,7 @@ RUN docker-php-ext-install soap
 RUN docker-php-ext-install pdo_mysql
 
 #Rename php extensions directory
-RUN mv /usr/local/lib/php/extensions/no-debug-non-zts-20170718/* /usr/local/lib/php/extensions
+RUN mv /usr/local/lib/php/extensions/no-debug-non-zts-20180731/* /usr/local/lib/php/extensions
 
 #add a default php.ini file
 RUN echo "extension_dir=/usr/local/lib/php/extensions" >> /usr/local/etc/php/php.ini
