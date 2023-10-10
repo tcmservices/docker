@@ -24,9 +24,7 @@ RUN apt-get update && apt-get install -y \
     #Install Cron
     cron \
     #Install mysql client
-    default-mysql-client \
-    #Install JPEG Support
-    libjpeg62-turbo-dev \
+    default-mysql-client
 
 #Install mcrypt support
 #RUN pecl install mcrypt-1.0.1
